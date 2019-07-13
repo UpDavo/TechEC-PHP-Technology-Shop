@@ -12,19 +12,17 @@
                                 <li class="hassubs">
                                     <a href="../index.php">Inicio</a>
                                     <ul>
-                                        <li><a href="categories.html">Categorias</a></li>
-                                        <li><a href="product.html">Producto</a></li>
-                                        <li><a href="cart.html">Carrito</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="contact.html">Contacto</a></li>
+                                        <li><a href="Catalogo.php">Categorias</a></li>
+                                        <li><a href="#">Carrito</a></li>
+                                        <li><a href="#">Check Out</a></li>
+                                        <li><a href="#">Contacto</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Catálogo</a>
                                 </li>
-                                <li><a href="#">Accesorios</a></li>
                                 <li><a href="#">Ofertas</a></li>
-                                <li><a href="contact.html">Contacto</a></li>
+                                <li><a href="#">Contacto</a></li>
                             </ul>
                         </nav>
                         <div class="header_extra ml-auto">
@@ -41,6 +39,10 @@
                                     </svg>
                                     <div>Carrito <span>(0)</span></div>
                                 </a>
+                            </div>
+                            <div class="shopping_cart" style="margin-left: 10px;">
+                                <button type="button" class="btn btn-success btn-sm"><a href="Login.php" style="color:white !important;">Iniciar session</a></button>
+                                <button type="button" class="btn btn-success btn-sm"><a href="Registro.php" style="color:white !important;">Registrate</a></button>
                             </div>
                             <div class="search">
                                 <div class="search_icon">
@@ -61,7 +63,6 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
                         </div>
                     </div>
                 </div>

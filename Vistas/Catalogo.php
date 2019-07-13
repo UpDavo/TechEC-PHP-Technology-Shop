@@ -73,7 +73,6 @@ $lista = $_SESSION['lista'];
                                             <ul>
                                                 <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Sin Orden</span></li>
                                                 <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Precio</span></li>
-                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Nombre</span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -107,13 +106,6 @@ $lista = $_SESSION['lista'];
                             }
                             ?>
 
-                        </div>
-                        <div class="product_pagination">
-                            <ul>
-                                <li class="active"><a href="#">01.</a></li>
-                                <li><a href="#">02.</a></li>
-                                <li><a href="#">03.</a></li>
-                            </ul>
                         </div>
 
                     </div>
