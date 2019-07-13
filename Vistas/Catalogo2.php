@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+$lista = $_SESSION['lista'];
+?>
+
 <html lang="en">
 
 <head>
@@ -22,61 +28,12 @@
 
         <?php include('header.php') ?>
 
-        <!-- Menu -->
-
-        <div class="menu menu_mm trans_300">
-            <div class="menu_container menu_mm">
-                <div class="page_menu_content">
-
-                    <div class="page_menu_search menu_mm">
-                        <form action="#">
-                            <input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
-                        </form>
-                    </div>
-                    <ul class="page_menu_nav menu_mm">
-                        <li class="page_menu_item has-children menu_mm">
-                            <a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection menu_mm">
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children menu_mm">
-                            <a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection menu_mm">
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item menu_mm"><a href="index.html">Accessories<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="#">Offers<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-            <div class="menu_social">
-                <ul>
-                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div>
 
         <!-- Home -->
 
         <div class="home">
             <div class="home_container">
-                <div class="home_background" style="background-image:url(images/categories.jpg)"></div>
+                <div class="home_background" style="background-image:url(../assets/images/categories.jpg)"></div>
                 <div class="home_content_container">
                     <div class="container">
                         <div class="row">
@@ -122,6 +79,9 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!--Aqui comienza la seccion de productos-->
                 <div class="row">
                     <div class="col">
 
@@ -257,39 +217,39 @@
             </div>
         </div>
 
-        <!-- Icon Boxes -->
+        <!-- Barra final con soporte tecnico -->
 
         <div class="icon_boxes">
             <div class="container">
                 <div class="row icon_box_row">
 
-                    <!-- Icon Box -->
+                    <!-- Caja 1 -->
                     <div class="col-lg-4 icon_box_col">
                         <div class="icon_box">
-                            <div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
-                            <div class="icon_box_title">Free Shipping Worldwide</div>
+                            <div class="icon_box_image"><img src="../assets/images/icon_1.svg" alt=""></div>
+                            <div class="icon_box_title">Envio gratis a nivel Mundial</div>
                             <div class="icon_box_text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Icon Box -->
+                    <!-- Caja 2 -->
                     <div class="col-lg-4 icon_box_col">
                         <div class="icon_box">
-                            <div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
-                            <div class="icon_box_title">Free Returns</div>
+                            <div class="icon_box_image"><img src="../assets/images/icon_2.svg" alt=""></div>
+                            <div class="icon_box_title">Cualquier error es acreedor a un reembolso</div>
                             <div class="icon_box_text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Icon Box -->
+                    <!-- Caja 3 -->
                     <div class="col-lg-4 icon_box_col">
                         <div class="icon_box">
-                            <div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
-                            <div class="icon_box_title">24h Fast Support</div>
+                            <div class="icon_box_image"><img src="../assets/images/icon_3.svg" alt=""></div>
+                            <div class="icon_box_title">Soporte 24H</div>
                             <div class="icon_box_text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
                             </div>
@@ -300,64 +260,8 @@
             </div>
         </div>
 
-        <!-- Newsletter -->
+        <?php include('footer.php') ?>
 
-        <div class="newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="newsletter_border"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="newsletter_content text-center">
-                            <div class="newsletter_title">Subscribe to our newsletter</div>
-                            <div class="newsletter_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros</p>
-                            </div>
-                            <div class="newsletter_form_container">
-                                <form action="#" id="newsletter_form" class="newsletter_form">
-                                    <input type="email" class="newsletter_input" required="required">
-                                    <button class="newsletter_button trans_200"><span>Subscribe</span></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-
-        <div class="footer_overlay"></div>
-        <footer class="footer">
-            <div class="footer_background" style="background-image:url(images/footer.jpg)"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
-                            <div class="footer_logo"><a href="#">Sublime.</a></div>
-                            <div class="copyright ml-auto mr-auto">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </div>
-                            <div class="footer_social ml-lg-auto">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
 
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
