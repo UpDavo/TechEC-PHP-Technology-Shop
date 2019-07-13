@@ -8,7 +8,7 @@ $lista = $_SESSION['lista'];
 <html lang="en">
 
 <head>
-    <title>Categories</title>
+    <title>TechEC | Productos</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sublime project">
@@ -26,7 +26,7 @@ $lista = $_SESSION['lista'];
 
     <div class="super_container">
 
-        <?php include('header.php') ?>
+        <?php include('Header.php') ?>
 
 
         <!-- Home -->
@@ -39,9 +39,12 @@ $lista = $_SESSION['lista'];
                         <div class="row">
                             <div class="col">
                                 <div class="home_content">
-                                    <div class="home_title">Telefonos Inteligentes <span>.</span></div>
+                                    <div class="home_title">Componentes Tecnológicos<span>.</span></div>
                                     <div class="home_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.
+                                            Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -68,9 +71,9 @@ $lista = $_SESSION['lista'];
                                             <span class="sorting_text">Ordenar por</span>
                                             <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                             <ul>
-                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
-                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
+                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Sin Orden</span></li>
+                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Precio</span></li>
+                                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Nombre</span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -217,50 +220,9 @@ $lista = $_SESSION['lista'];
             </div>
         </div>
 
-        <!-- Barra final con soporte tecnico -->
+        <?php include('Soporte.php') ?>
 
-        <div class="icon_boxes">
-            <div class="container">
-                <div class="row icon_box_row">
-
-                    <!-- Caja 1 -->
-                    <div class="col-lg-4 icon_box_col">
-                        <div class="icon_box">
-                            <div class="icon_box_image"><img src="../assets/images/icon_1.svg" alt=""></div>
-                            <div class="icon_box_title">Envio gratis a nivel Mundial</div>
-                            <div class="icon_box_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Caja 2 -->
-                    <div class="col-lg-4 icon_box_col">
-                        <div class="icon_box">
-                            <div class="icon_box_image"><img src="../assets/images/icon_2.svg" alt=""></div>
-                            <div class="icon_box_title">Cualquier error es acreedor a un reembolso</div>
-                            <div class="icon_box_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Caja 3 -->
-                    <div class="col-lg-4 icon_box_col">
-                        <div class="icon_box">
-                            <div class="icon_box_image"><img src="../assets/images/icon_3.svg" alt=""></div>
-                            <div class="icon_box_title">Soporte 24H</div>
-                            <div class="icon_box_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <?php include('footer.php') ?>
+        <?php include('Footer.php') ?>
 
     </div>
 
