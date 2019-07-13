@@ -40,7 +40,14 @@ $lista = $_SESSION['lista'];
                         <img src="../img/<?php echo $recorrido[6]; ?>" width="120" height="120" alt="Imagen">
                         <br>
                         <br>
-                        <button type="button" class="btn btn-primary">Agregar</button>
+                        <h3>
+                            <?php echo $recorrido[1] ?>
+                        </h3>
+                        <h4>
+                            <?php echo $recorrido[2] ?>
+                        </h4>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-lg">Agregar</button>
                     </th>
 
                 <?php
