@@ -37,7 +37,7 @@ $lista = $_SESSION['lista'];
                     }
                     ?>
                     <th>
-                        <img src="../img/<?php echo $recorrido[6]; ?>" width="120" height="120" alt="Imagen">
+                        <img src="../assets/img/<?php echo $recorrido[6]; ?>" width="120" height="120" alt="Imagen">
                         <br>
                         <br>
                         <h3>
