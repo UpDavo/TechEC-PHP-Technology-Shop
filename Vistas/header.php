@@ -9,29 +9,22 @@
                         <div class="logo"><a href="#">Tech EC</a></div>
                         <nav class="main_nav">
                             <ul>
-                                <li class="hassubs active">
-                                    <a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="categories.html">Categories</a></li>
-                                        <li><a href="product.html">Product</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Check out</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
                                 <li class="hassubs">
-                                    <a href="categories.html">Categories</a>
+                                    <a href="../index.php">Inicio</a>
                                     <ul>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
+                                        <li><a href="categories.html">Categorias</a></li>
+                                        <li><a href="product.html">Producto</a></li>
+                                        <li><a href="cart.html">Carrito</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="contact.html">Contacto</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Offers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li>
+                                    <a href="#">Catálogo</a>
+                                </li>
+                                <li><a href="#">Accesorios</a></li>
+                                <li><a href="#">Ofertas</a></li>
+                                <li><a href="contact.html">Contacto</a></li>
                             </ul>
                         </nav>
                         <div class="header_extra ml-auto">
@@ -46,7 +39,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
                                         </g>
                                     </svg>
-                                    <div>Cart <span>(0)</span></div>
+                                    <div>Carrito <span>(0)</span></div>
                                 </a>
                             </div>
                             <div class="search">
@@ -83,7 +76,7 @@
                 <div class="col">
                     <div class="search_panel_content d-flex flex-row align-items-center justify-content-end">
                         <form action="#">
-                            <input type="text" class="search_input" placeholder="Search" required="required">
+                            <input type="text" class="search_input" placeholder="Buscar Productos" required="required">
                         </form>
                     </div>
                 </div>
