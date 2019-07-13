@@ -6,9 +6,11 @@
 
 include '../util/ConexionDB.php';
 
-class metodosDAO {
+class metodosDAO
+{
 
-    public function ListarProductos() {
+    public function ListarProductos()
+    {
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
@@ -24,5 +26,4 @@ class metodosDAO {
         }
         return $lista;
     }
-
 }
