@@ -94,7 +94,7 @@ $lista = $_SESSION['lista'];
                                 ?>
                                 <div class="product">
                                     <div class="product_image"><img src="../assets/img/<?php echo $listado[6] ?>" alt="Producto-<?php echo $listado[0] ?>" width="250px" height="220px"></div>
-                                    <div class="product_extra product_new"><a href="#">Nuevo</a></div>
+                                    <div class="product_extra product_new"><a href="#"><?php echo $listado[4] ?></a></div>
                                     <div class="product_content">
                                         <div class="product_title"><a href="#"><?php echo $listado[1] ?></a></div>
                                         <div class="product_price">$<?php echo $listado[2] ?></div>
