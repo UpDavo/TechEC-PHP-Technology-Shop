@@ -99,7 +99,7 @@ $lista = $_SESSION['lista'];
                                         <div class="product_title"><a href="#"><?php echo $listado[1] ?></a></div>
                                         <div class="product_price">$<?php echo $listado[2] ?></div>
                                         <br>
-                                        <button type="button" class="btn btn-success" id="Carrito">Añadir al Carrito</button>
+                                        <button type="button" onclick="enviar(<?php echo $listado[0] ?>)" class="btn btn-success" data-toggle="modal" data-target="#productos" id="Carrito" onclick="">Añadir al Carrito</button>
                                     </div>
                                 </div>
                             <?php
@@ -114,6 +114,27 @@ $lista = $_SESSION['lista'];
         </div>
 
         <?php include('Soporte.php') ?>
+
+        <!-- Modal -->
+        <div class="modal fade" id="productos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><?php echo $listado[1] ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="mostrar">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success">Agregarlo al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php include('Footer.php') ?>
 
@@ -132,6 +153,29 @@ $lista = $_SESSION['lista'];
     <script src="../assets/plugins/easing/easing.js"></script>
     <script src="../assets/plugins/parallax-js-master/parallax.min.js"></script>
     <script src="../assets/js/categories.js"></script>
+
+    <script>
+        var resultado = document.getElementById('mostrar');
+
+        //Esta funcion sirve para enviar un AJAX a la peticion del producto
+        function enviar(codigo) {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    resultado.innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("GET", "Detalle.php?codigo=" + codigo, true);
+            xmlhttp.send();
+        }
+    </script>
 </body>
 
 </html>
