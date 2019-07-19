@@ -45,4 +45,8 @@ class metodosDAO
         }
         return $lista;
     }
+
+
+    public function Ingresar()
+    { }
 }

@@ -1,8 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+include '../DAO/metodosDAO.php'; //incluyo los metodos
+
+$objetoMetodos = new metodosDAO();
+
+?>
 <html>
 
 <head>
-    <title>Registro</title>
+    <title>TechEC | Registro</title>
 
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
@@ -20,25 +27,27 @@
         <div class="col-sm-8 main-section">
             <div class="modal-content" style="margin-top: -10%;">
                 <h1 style="color:white; margin-bottom: -10px; margin-top: 10px;" align="center">Tech EC</h1>
-                <form class="col-12">
+
+
+                <form class="col-12" method="POST" action="../DAO/registroBase.php">
                     <div class="form-group" id="user-group" style="margin-top: 10%;">
-                        <input type="text" class="form-control" placeholder="Nombre" />
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" />
                     </div>
 
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Apellido" />
+                        <input type="text" class="form-control" placeholder="Apellido" name="apellido" />
                     </div>
 
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nickname" />
+                        <input type="text" class="form-control" placeholder="Nickname" name="nick" />
                     </div>
 
                     <div class="form-group" id="user-group">
-                        <input type="email" class="form-control" placeholder="Correo electronico" />
+                        <input type="email" class="form-control" placeholder="Correo electronico" name="mail" />
                     </div>
 
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" />
+                        <input type="password" class="form-control" placeholder="Contraseña" name="clave" />
                     </div>
 
                     <div class="form-group" id="contrasena-group">
