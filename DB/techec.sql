@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 19, 2019 at 06:02 PM
+-- Generation Time: Jul 21, 2019 at 02:54 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -32,9 +32,10 @@ DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
   `codCli` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
+  `nickname` varchar(12) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `pas` varchar(30) NOT NULL,
-  `nickname` varchar(12) NOT NULL,
+  `fecha_creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`codCli`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -42,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 -- Dumping data for table `clientes`
 --
 
-INSERT INTO `clientes` (`codCli`, `nombre`, `correo`, `pas`, `nickname`) VALUES
-(5, 'Anthony Villegas', 'advillegas@uees.edu.ec', '12x3x4x5', '');
+INSERT INTO `clientes` (`codCli`, `nombre`, `nickname`, `correo`, `pas`, `fecha_creado`) VALUES
+(5, 'Anthony Villegas', '', 'advillegas@uees.edu.ec', '12x3x4x5', '2019-07-21 14:54:19');
 
 -- --------------------------------------------------------
 
