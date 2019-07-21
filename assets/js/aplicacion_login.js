@@ -15,7 +15,6 @@ $(document).ready(function() {
       clave2: $("input[name ='clave2']", $form).val()
     };
 
-
     if (datosFormulario.mail.length < 6) {
       $("#msg_error")
         .text("Necesitamos un email valido")
@@ -35,7 +34,7 @@ $(document).ready(function() {
 
     $("#msg_error").hide();
 
-    var urlphp = "http://localhost/TechEC-1/DAO/AJAX/procesar_registro.php";
+    var urlphp = "http://localhost/TechEC-1/DAO/procesar_registro.php";
 
     $.ajax({
       type: "POST",
@@ -51,9 +50,7 @@ $(document).ready(function() {
         console.log(error);
       })
       .always(function ajaxSiempre() {
-        console.log(
-          "final de la llamada en ajax"
-        );
+        console.log("final de la llamada en ajax");
       });
   });
 

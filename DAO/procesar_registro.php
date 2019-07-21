@@ -1,6 +1,6 @@
 <?php
 
-include "../metodosDAO.php";
+include "metodosDAO.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $array_devolver['is_login'] = true;
     }
 
-    echo json_encode("$array_devolver");
+    echo json_encode($array_devolver);
 } else {
     exit("Fuera de aqui");
 }

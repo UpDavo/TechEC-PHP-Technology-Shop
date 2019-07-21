@@ -22,7 +22,7 @@
                 <h1 style="color:white; margin-bottom: -10px; margin-top: 10px;" align="center">Tech EC</h1>
 
 
-                <form class="col-12" method="POST" id="formulario_registro" novalidate>
+                <form class="col-12" method="POST" action="POST" id="formulario_registro">
 
                     <div class="form-group" id="user-group" style="margin-top: 10%;">
                         <input type="text" class="form-control" placeholder="Nombre" name="nombre" />

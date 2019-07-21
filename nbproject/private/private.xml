@@ -4,7 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp64/www/TiendaOnline/DAO/metodosDAO.php</file>
-            <file>file:/C:/wamp64/www/TiendaOnline/util/ConexionDB.php</file>
+            <file>file:/C:/wamp64/www/TiendaOnline/DAO/ConexionDB.php</file>
             <file>file:/C:/wamp64/www/TiendaOnline/DAO/tiendaDAO.php</file>
             <file>file:/C:/wamp64/www/TiendaOnline/Index.php</file>
         </group>
