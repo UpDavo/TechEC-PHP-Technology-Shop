@@ -1,10 +1,16 @@
 <?php
 
-class ConexionDB {
+class ConexionDB
+{
 
-    public function getConexion() {
-        $cnx = new PDO("mysql:host=localhost;dbname=techec", "root", "");
-        return $cnx;
+    public function getConexion()
+    {
+        try {
+            $cnx = new PDO("mysql:host=localhost;dbname=techec", "root", "");
+            return $cnx;
+        } catch (PDOException $error) {
+            echo "No hemos podido comunicarnos con la base de datos";
+            exit;
+        }
     }
-
 }

@@ -1,4 +1,5 @@
-$(document).on("submit", "FORM", function(event) {
+$(document).on("submit", ".formulario_registro", function(event) {
+  //cuando el usuario de click en el boton de enviar escucharemos la clase del formulario de registro
   event.preventDefault();
   console.log("Formulario Enviado");
 });

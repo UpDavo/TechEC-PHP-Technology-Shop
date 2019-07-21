@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-
-<?php
-include '../DAO/metodosDAO.php'; //incluyo los metodos
-
-$objetoMetodos = new metodosDAO();
-
-?>
 <html>
 
 <head>
@@ -29,7 +22,7 @@ $objetoMetodos = new metodosDAO();
                 <h1 style="color:white; margin-bottom: -10px; margin-top: 10px;" align="center">Tech EC</h1>
 
 
-                <form class="col-12" method="POST" action="../DAO/registroBase.php">
+                <form class="col-12" method="POST" action="../DAO/registroBase.php" class="formulario_registro">
                     <div class="form-group" id="user-group" style="margin-top: 10%;">
                         <input type="text" class="form-control" placeholder="Nombre" name="nombre" />
                     </div>
@@ -58,6 +51,7 @@ $objetoMetodos = new metodosDAO();
                         <i class="fas fa-sign-in-alt"></i> Registrarse
                     </button>
                 </form>
+                <div id="msg_error" class="alert alert-danger" role="alert" style="display: none">Error</div>
                 <div class="col-12 forgot" style="margin-bottom: 10px; margin-top: -20px;">
                     <a href="Login.php">Ya tienes una cuenta?</a>
                 </div>
