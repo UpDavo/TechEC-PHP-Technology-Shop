@@ -22,7 +22,8 @@
                 <h1 style="color:white; margin-bottom: -10px; margin-top: 10px;" align="center">Tech EC</h1>
 
 
-                <form class="col-12" method="POST" action="../DAO/registroBase.php" class="formulario_registro">
+                <form class="col-12" method="POST" id="formulario_registro" novalidate>
+
                     <div class="form-group" id="user-group" style="margin-top: 10%;">
                         <input type="text" class="form-control" placeholder="Nombre" name="nombre" />
                     </div>
@@ -44,14 +45,19 @@
                     </div>
 
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Confirmar Contraseña" />
+                        <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="clave2" />
                     </div>
 
-                    <button type="submit" class="btn btn-success">
-                        <i class="fas fa-sign-in-alt"></i> Registrarse
-                    </button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-sign-in-alt"></i> Registrarse
+                        </button>
+                    </div>
+
                 </form>
-                <div id="msg_error" class="alert alert-danger" role="alert" style="display: none">Error</div>
+
+                <div id="msg_error" class="alert alert-danger" role="alert" style="display: none; margin-top: -16px; margin-bottom: 26px;">Error</div>
+
                 <div class="col-12 forgot" style="margin-bottom: 10px; margin-top: -20px;">
                     <a href="Login.php">Ya tienes una cuenta?</a>
                 </div>
@@ -65,7 +71,8 @@
     </div>
 
     <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../assets/js/aplicacion_login.js"></script>
 </body>
 
 </html>
