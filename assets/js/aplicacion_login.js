@@ -15,7 +15,6 @@ $(document).ready(function() {
       clave2: $("input[name ='clave2']", $form).val()
     };
 
-    console.log(datosFormulario);
 
     if (datosFormulario.mail.length < 6) {
       $("#msg_error")

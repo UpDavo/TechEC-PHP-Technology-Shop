@@ -5,6 +5,7 @@ include "../metodosDAO.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     header("Content-Type: application/json");
+
     $array_devolver = [];
     $email = strtolower($_POST['mail']);
     $nombre = strtoupper($_POST['nombre']);
