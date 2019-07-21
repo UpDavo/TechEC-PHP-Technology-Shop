@@ -53,7 +53,7 @@ $(document).ready(function() {
       })
       .always(function ajaxSiempre() {
         console.log(
-          "final de la llamada en ajax funcionando 100% real no feik"
+          "final de la llamada en ajax"
         );
       });
   });

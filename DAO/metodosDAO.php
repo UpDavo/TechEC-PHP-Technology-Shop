@@ -63,7 +63,7 @@ class metodosDAO
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cnx->prepare("INSERT INTO clientes (nombre, nickname, correo, pas) VALUES (:nombre :apellido, :nickname, :correo, :pass)");
+        $res = $cn->prepare("INSERT INTO clientes (nombre, nickname, correo, pas) VALUES (:nombre :apellido, :nickname, :correo, :pass)");
         $res->bindParam(":nombre", $nombre, PDO::PARAM_STR);
         $res->bindParam(":apellido", $apellido, PDO::PARAM_STR);
         $res->bindParam(":nickname", $nickname, PDO::PARAM_STR);
@@ -73,6 +73,6 @@ class metodosDAO
         $res->execute();
 
         $user_id = $cn->lastInsertId();
-        $_SESSION['user_id'] = (int) $user_id;
+        return $user_id;
     }
 }

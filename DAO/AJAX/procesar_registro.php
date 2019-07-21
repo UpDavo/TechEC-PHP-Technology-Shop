@@ -1,15 +1,15 @@
 <?php
 
-require_once "../metodosDAO.php";
+include "../metodosDAO.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    header("content-Type: application/json");
+    header("Content-Type: application/json");
     $array_devolver = [];
     $email = strtolower($_POST['mail']);
-    $nombre = $_POST['nombre'];
-    $apellito = $_POST['apellido'];
-    $nickname = $_POST['nick'];
+    $nombre = strtoupper($_POST['nombre']);
+    $apellido = strtoupper($_POST['apellido']);
+    $nickname = strtoupper($_POST['nick']);
 
     //Hay que comprobar si el usuario existe para no replicarlo en la base de datos
 
@@ -25,12 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //hash para el password para no guardarlo en texto plano
         $password = password_hash($_POST['clave1'], PASSWORD_DEFAULT);
 
-        $metodosRegistro->IngresarUsuario($nombre, $apellito, $nickname, $email, $password);
+        $user_id = $metodosRegistro->IngresarUsuario($nombre, $apellido, $nickname, $email, $password);
+        $_SESSION['user_id'] = (int) $user_id;
         $array_devolver['redirect'] = '';
         $array_devolver['is_login'] = true;
     }
 
-    echo json_encode($array_devolver);
+    echo json_encode("$array_devolver");
 } else {
     exit("Fuera de aqui");
 }
