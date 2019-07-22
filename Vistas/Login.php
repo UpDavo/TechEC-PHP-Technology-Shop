@@ -2,10 +2,7 @@
 <html>
 
 <head>
-    <title>Mi primer Login</title>
-
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>TechEC | Login</title>
 
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
@@ -27,19 +24,19 @@
                 <div class="col-12 user-img">
                     <img src="../assets/img/user.png" />
                 </div>
-                <form class="col-12">
+                <form class="col-12" id="formulario_login">
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" />
+                        <input type="text" class="form-control" placeholder="Email" name="mail" />
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" />
+                        <input type="password" class="form-control" placeholder="Contraseña" name="clave" />
                     </div>
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-sign-in-alt"></i> Ingresar
                     </button>
                 </form>
 
-
+                <div id="msg_error" class="alert alert-danger" role="alert" style="display: none; margin-top: -16px; margin-bottom: 26px;">Error</div>
                 <div class="col-12 forgot" style="margin-bottom: 10px; margin-top: -20px;">
                     <a href="#">Olvidó su contraseña?</a>
                 </div>
@@ -54,6 +51,11 @@
             </div>
         </div>
     </div>
+
+
+    <!--JQUERY-->
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../assets/js/aplicacion_login.js"></script>
 </body>
 
 </html>

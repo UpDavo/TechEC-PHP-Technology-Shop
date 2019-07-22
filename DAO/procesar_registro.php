@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $user_id = $cn->lastInsertId();
         $_SESSION['user_id'] = (int) $user_id;
-        $array_devolver['redirect'] = '';
+        $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/Login.php';
         $array_devolver['is_login'] = true;
     }
 
