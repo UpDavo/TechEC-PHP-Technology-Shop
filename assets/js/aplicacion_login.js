@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     if (datosFormulario.mail.length < 6) {
       $("#msg_error")
-        .text("Necesitamos un email valido")
+        .text("Ingresa un email valido")
         .show();
       return false;
     } else if (datosFormulario.clave1.length < 5) {

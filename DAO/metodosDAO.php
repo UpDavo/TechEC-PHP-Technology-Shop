@@ -4,7 +4,7 @@
  * Dao Significa Data Acces Object
  */
 
-include 'ConexionDB.php';
+include_once 'ConexionDB.php';
 
 
 class metodosDAO
@@ -52,7 +52,8 @@ class metodosDAO
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cn->prepare("SELECT * FROM clientes where correo = $email");
+        $res = $cn->prepare("SELECT * FROM clientes where correo = :email");
+        $res->bindParam(":email", $email, PDO::PARAM_STR);
         $res->execute();
 
         return $res;
@@ -63,14 +64,12 @@ class metodosDAO
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cn->prepare("INSERT INTO clientes (nombre, nickname, correo, pas) VALUES ($nombre.$apellido, $nickname, $correo, $password)");
-        /*
+        $res = $cn->prepare("INSERT INTO clientes (nombre, nickname, correo, pas) VALUES (:nombre :apellido, :nickname, :correo, :pass)");
         $res->bindParam(":nombre", $nombre, PDO::PARAM_STR);
         $res->bindParam(":apellido", $apellido, PDO::PARAM_STR);
         $res->bindParam(":nickname", $nickname, PDO::PARAM_STR);
         $res->bindParam(":correo", $correo, PDO::PARAM_STR);
         $res->bindParam(":pass", $password, PDO::PARAM_STR);
-        */
         $res->execute();
 
         $user_id = $cn->lastInsertId();
