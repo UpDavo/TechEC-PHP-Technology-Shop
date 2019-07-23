@@ -50,8 +50,6 @@ $(document).ready(function() {
           $("#msg_error")
             .text(res.error)
             .show();
-        } else {
-          window.location.href = res.redirect;
         }
       })
       .fail(function ajaxError(error) {
@@ -61,6 +59,8 @@ $(document).ready(function() {
         console.log("final de la llamada en ajax");
       });
   });
+
+  /*---------------------------------------------------------------------------------*/
 
   $(document).on("submit", "#formulario_login", function(event) {
     //cuando el usuario de click en el boton de enviar escucharemos la clase del formulario de registro
