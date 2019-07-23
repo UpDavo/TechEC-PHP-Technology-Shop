@@ -52,6 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     echo json_encode($array_devolver);
+    $cnx->closeConexion($cn);
+    $cnx = null;
 } else {
     exit("Fuera de aqui");
 }
