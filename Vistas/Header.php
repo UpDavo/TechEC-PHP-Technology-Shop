@@ -9,13 +9,9 @@
                         <div class="logo"><a href="#">Tech EC</a></div>
                         <nav class="main_nav">
                             <ul>
-                                <li class="hassubs">
-                                    <a href="../index.php">Inicio</a>
+                                <li class="">
+                                    <a href="Catalogo.php">Inicio</a>
                                 </li>
-                                <li>
-                                    <a href="#">Catálogo</a>
-                                </li>
-                                <li><a href="#">Ofertas</a></li>
                                 <li><a href="#">Contacto</a></li>
                             </ul>
                         </nav>
