@@ -26,6 +26,7 @@ function eliminarDatos()
     $cart->destroy();;
 }
 
+
 if (isset($_GET['ejecutar'])) {
     eliminarDatos();
 }
@@ -207,7 +208,6 @@ if (isset($_GET['ejecutar'])) {
         const datos = <?php echo json_encode($arrayDatos); ?>;
         console.log(datos);
         $('#iniciado').hide();
-        $('#carrito').hide();
         $('#agregar').hide();
         if (datos.usuarioId != null) {
             $('#iniciado').show();

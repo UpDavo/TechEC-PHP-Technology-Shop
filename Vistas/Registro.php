@@ -17,27 +17,33 @@
 
 <body>
     <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
+        <div class="col-md-12 main-section">
             <div class="modal-content" style="margin-top: -10%;">
                 <h1 style="color:white; margin-bottom: -10px; margin-top: 10px;" align="center">Tech EC</h1>
 
 
-                <form class="col-12" method="POST" action="POST" id="formulario_registro">
+                <form class="col-md-12" method="POST" action="POST" id="formulario_registro">
 
-                    <div class="form-group" id="user-group" style="margin-top: 10%;">
-                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" />
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="user-group" style="margin-top: 10%;">
+                                <input type="text" class="form-control" placeholder="Nombre" name="nombre" />
+                            </div>
 
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Apellido" name="apellido" />
-                    </div>
+                            <div class="form-group" id="user-group">
+                                <input type="text" class="form-control" placeholder="Apellido" name="apellido" />
+                            </div>
+                        </div>
 
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nickname" name="nick" />
-                    </div>
+                        <div class="col-md-6" style="margin-top: 20px;">
+                            <div class="form-group" id="user-group">
+                                <input type="text" class="form-control" placeholder="Nickname" name="nick" />
+                            </div>
 
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Celular" name="celular" />
+                            <div class="form-group" id="user-group">
+                                <input type="text" class="form-control" placeholder="Celular" name="celular" />
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group" id="user-group">

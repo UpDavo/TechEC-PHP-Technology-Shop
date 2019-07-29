@@ -1,5 +1,19 @@
 <!-- Header -->
 
+<?php
+function obtenerCarrito()
+{
+    $cart = new Cart;
+
+    if ($cart->total_items() === null) {
+        $valorCarrito = 0;
+    } else {
+        $valorCarrito = $cart->total_items();
+    }
+    return $valorCarrito;
+}
+?>
+
 <header class="header">
     <div class="header_container">
         <div class="container">
@@ -27,7 +41,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
                                         </g>
                                     </svg>
-                                    <div>Carrito <span>(0)</span></div>
+                                    <div>Carrito <span><?php echo obtenerCarrito() ?></span></div>
                                 </a>
                             </div>
                             <div class="shopping_cart" style="margin-left: 10px;" id="registrar">

@@ -19,12 +19,14 @@
 
 <body>
     <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
+        <div class="col-md-10 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="../assets/img/user.png" />
+                    <img src="../assets/img/user.png" width="110px" />
+                    <h4 style="color: white; margin-bottom: -10px; margin-top: 10px;">Tech EC - Lo mejor que le pudo pasar a la tecnologia</h4>
                 </div>
                 <form class="col-12" id="formulario_login">
+
                     <div class="form-group" id="user-group">
                         <input type="text" class="form-control" placeholder="Email" name="mail" />
                     </div>

@@ -16,17 +16,6 @@ foreach ($listaCodigo as $row) {
     $imagen = $row[5];
 }
 
-if ($_SESSION['user_id'] != null) {
-    $usuario = $objetoMetodos->BuscarUsuarioNick($_SESSION['user_id']);
-    $arrayDatos = [];
-    $arrayDatos['usuarioNick'] = $usuario;
-    $arrayDatos['usuarioId'] = $_SESSION['user_id'];
-} else {
-    $usuario = null;
-    $arrayDatos = [];
-    $arrayDatos['usuarioId'] = null;
-}
-
 ?>
 
 
@@ -67,26 +56,10 @@ if ($_SESSION['user_id'] != null) {
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <a class="btn btn-success" href="../Pagos/AccionCarta.php?action=addToCart&id=<?php echo $id ?>">Agregarlo al carrito</a>
         </div>
-        <div align='center' id="iniciarSesion">
-            <p>Para poder agregar productos a tu carrito debes iniciar sesion</p>
-            <a class="btn btn-success" href="Login.php">Iniciar sesion</a>
-        </div>
     </form>
 
 
-    <script src="../assets/js/jquery-3.2.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            const datos = <?php echo json_encode($arrayDatos); ?>;
-            console.log(datos);
-            $('#agregar').hide();
-            if (datos.usuarioId != null) {
-                $('#agregar').show();
-                $("#iniciarSesion").hide();
-            }
 
-        })
-    </script>
 </body>
 
 </html>

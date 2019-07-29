@@ -236,7 +236,16 @@ if ($_SESSION['user_id'] != null) {
                                     </li>
                                 </ul>
                             </div>
-                            <div class="button checkout_button"><a href="Checkout.php">Proceder al checkout</a></div>
+                            <div id="iniciarSesion">
+                                <div align='center' style="margin-top: 10px">
+                                    <h5>Para poder realizar el pedido debes iniciar sesion</h5>
+                                </div>
+                                <div class="button checkout_button">
+                                    <a href="Login.php">Iniciar sesion</a>
+                                </div>
+                            </div>
+
+                            <div class="button checkout_button" id="checkout"><a href="Checkout.php">Proceder al checkout</a></div>
                         </div>
                     </div>
                 </div>
@@ -263,10 +272,12 @@ if ($_SESSION['user_id'] != null) {
         const datos = <?php echo json_encode($arrayDatos); ?>;
         console.log(datos);
         $('#iniciado').hide();
-        $('#carrito').hide();
+        $('#checkout').hide();
         if (datos.usuarioId != null) {
             $('#iniciado').show();
             $('#carrito').show();
+            $('#checkout').show();
+            $('#iniciarSesion').hide();
             $("#registrar").hide();
         }
     </script>
