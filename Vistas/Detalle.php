@@ -53,7 +53,7 @@ foreach ($listaCodigo as $row) {
         </table>
         <div align="center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success">Agregarlo al carrito</button>
+            <a class="btn btn-success" href="../Dreyna/AccionCarta.php?action=addToCart&id=<?php echo $id ?>"> class="btn btn-success">Agregarlo al carrito</button>
         </div>
     </form>
 </body>

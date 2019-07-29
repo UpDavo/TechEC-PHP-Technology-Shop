@@ -13,6 +13,7 @@ switch ($op) {
         $objMetodo = new metodosDAO();
         $lista = $objMetodo->ListarProductos();
         $_SESSION['lista'] = $lista;
+        $_SESSION['user_id'] = null;
         header("location: ../Vistas/Catalogo.php");
     case 2:
         break;

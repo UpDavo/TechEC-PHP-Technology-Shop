@@ -11,12 +11,6 @@
                             <ul>
                                 <li class="hassubs">
                                     <a href="../index.php">Inicio</a>
-                                    <ul>
-                                        <li><a href="Catalogo.php">Categorias</a></li>
-                                        <li><a href="#">Carrito</a></li>
-                                        <li><a href="#">Check Out</a></li>
-                                        <li><a href="#">Contacto</a></li>
-                                    </ul>
                                 </li>
                                 <li>
                                     <a href="#">Catálogo</a>
@@ -26,8 +20,8 @@
                             </ul>
                         </nav>
                         <div class="header_extra ml-auto">
-                            <div class="shopping_cart">
-                                <a href="../Dreyna">
+                            <div class="shopping_cart" id="carrito">
+                                <a href="../Pagos">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
                                         <g>
                                             <path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3

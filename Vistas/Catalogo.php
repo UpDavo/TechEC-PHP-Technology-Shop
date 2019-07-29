@@ -4,6 +4,7 @@
 session_start();
 include '../DAO/metodosDAO.php';
 $objMetodo = new metodosDAO();
+
 if ($_SESSION['user_id'] != null) {
     $usuario = $objMetodo->BuscarUsuarioNick($_SESSION['user_id']);
     $lista = $_SESSION['lista'];
@@ -196,8 +197,10 @@ if ($_SESSION['user_id'] != null) {
         const datos = <?php echo json_encode($arrayDatos); ?>;
         console.log(datos);
         $('#iniciado').hide();
+        $('#carrito').hide();
         if (datos.usuarioId != null) {
             $('#iniciado').show();
+            $('#carrito').show();
             $("#registrar").hide();
         }
     </script>

@@ -1,7 +1,8 @@
 <?php
 // include database configuration file
-include 'Configuracion.php';
-
+include '../DAO/ConexionDB.php';
+$cnx = new ConexionDB();
+$cn = $cnx->getConexion();
 // initializ shopping cart class
 include 'La-carta.php';
 $cart = new Cart;
@@ -11,12 +12,11 @@ if ($cart->total_items() <= 0) {
     header("Location: index.php");
 }
 
-// set customer ID in session
-$_SESSION['sessCustomerID'] = 3;
-
 // get customer details by session customer ID
-$query = $db->query("SELECT * FROM clientes WHERE id = " . $_SESSION['sessCustomerID']);
-$custRow = $query->fetch_assoc();
+echo $_SESSION['user_id'];
+$query = $cn->prepare("SELECT * FROM clientes WHERE id = " . $_SESSION['user_id']);
+$query->execute();
+$customRow = $query->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,10 +109,10 @@ $custRow = $query->fetch_assoc();
                 </table>
                 <div class="shipAddr">
                     <h4>Detalles de envío</h4>
-                    <p><?php echo $custRow['name']; ?></p>
-                    <p><?php echo $custRow['email']; ?></p>
-                    <p><?php echo $custRow['phone']; ?></p>
-                    <p><?php echo $custRow['address']; ?></p>
+                    <p><?php echo $customRow['name']; ?></p>
+                    <p><?php echo $customRow['email']; ?></p>
+                    <p><?php echo $customRow['phone']; ?></p>
+                    <p><?php echo $customRow['address']; ?></p>
                 </div>
                 <div class="footBtn">
                     <a href="index.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Continue Comprando</a>
