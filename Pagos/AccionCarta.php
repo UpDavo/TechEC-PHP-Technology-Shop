@@ -28,12 +28,13 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'id' => $row['id'],
             'name' => $row['name'],
             'price' => $row['price'],
+            'imagen' => $row['imagen'],
             'qty' => 1
         );
 
         //Se inserta el item dentro del carrito y se redireccion la location
         $insertItem = $cart->insert($itemData);
-        $redirectLoc = $insertItem ? 'VerCarta.php' : 'index.php';
+        $redirectLoc = $insertItem ? '../Vistas/Carrito.php' : '../Vistas/Catalogo.php';
         header("Location: " . $redirectLoc);
 
         //Por si se actualiza un producto del carrito
@@ -50,7 +51,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         //Por si se elimina un item del carrito
     } elseif ($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])) {
         $deleteItem = $cart->remove($_REQUEST['id']);
-        header("Location: VerCarta.php");
+        header("Location: ../Vistas/Carrito.php");
 
 
         //Este metodo es para realizar el pedido de los objetos en el carrito
@@ -81,7 +82,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
             if ($insertOrderItems) {
                 $cart->destroy();
-                header("Location: OrdenExito.php?id=$orderID");
+                header("Location: ../Vistas/OrdenExitosa.php?id=$orderID");
             } else {
                 header("Location: Pagos.php");
             }
@@ -89,8 +90,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             header("Location: Pagos.php");
         }
     } else {
-        header("Location: index.php");
+        header("Location: ../Vistas/Catalogo.php");
     }
 } else {
-    header("Location: index.php");
+    header("Location: ../Vistas/Catalogo.php");
 }

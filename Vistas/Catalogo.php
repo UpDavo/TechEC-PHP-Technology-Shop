@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
+include '../Pagos/La-carta.php';
 include '../DAO/metodosDAO.php';
 $objMetodo = new metodosDAO();
 
@@ -18,6 +18,16 @@ if ($_SESSION['user_id'] != null) {
     $arrayDatos = [];
     $arrayDatos['lista'] = $lista;
     $arrayDatos['usuarioId'] = null;
+}
+
+function eliminarDatos()
+{
+    $cart = new Cart;
+    $cart->destroy();;
+}
+
+if (isset($_GET['ejecutar'])) {
+    eliminarDatos();
 }
 
 ?>
@@ -198,10 +208,13 @@ if ($_SESSION['user_id'] != null) {
         console.log(datos);
         $('#iniciado').hide();
         $('#carrito').hide();
+        $('#agregar').hide();
         if (datos.usuarioId != null) {
             $('#iniciado').show();
             $('#carrito').show();
             $("#registrar").hide();
+            $('#agregar').show();
+            $("#iniciarSesion").hide();
         }
     </script>
 </body>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 include '../DAO/metodosDAO.php'; //incluyo los metodos
 $codigo = $_REQUEST['codigo']; //Recibe el codigo por el url
 
@@ -13,6 +14,17 @@ foreach ($listaCodigo as $row) {
     $precio = $row[6];
     $detalle = $row[2];
     $imagen = $row[5];
+}
+
+if ($_SESSION['user_id'] != null) {
+    $usuario = $objetoMetodos->BuscarUsuarioNick($_SESSION['user_id']);
+    $arrayDatos = [];
+    $arrayDatos['usuarioNick'] = $usuario;
+    $arrayDatos['usuarioId'] = $_SESSION['user_id'];
+} else {
+    $usuario = null;
+    $arrayDatos = [];
+    $arrayDatos['usuarioId'] = null;
 }
 
 ?>
@@ -51,11 +63,30 @@ foreach ($listaCodigo as $row) {
                 <th align="right">$ <?php echo $precio; ?></th>
             </tr>
         </table>
-        <div align="center">
+        <div align="center" id="agregar">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <a class="btn btn-success" href="../Dreyna/AccionCarta.php?action=addToCart&id=<?php echo $id ?>"> class="btn btn-success">Agregarlo al carrito</button>
+            <a class="btn btn-success" href="../Pagos/AccionCarta.php?action=addToCart&id=<?php echo $id ?>">Agregarlo al carrito</a>
+        </div>
+        <div align='center' id="iniciarSesion">
+            <p>Para poder agregar productos a tu carrito debes iniciar sesion</p>
+            <a class="btn btn-success" href="Login.php">Iniciar sesion</a>
         </div>
     </form>
+
+
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const datos = <?php echo json_encode($arrayDatos); ?>;
+            console.log(datos);
+            $('#agregar').hide();
+            if (datos.usuarioId != null) {
+                $('#agregar').show();
+                $("#iniciarSesion").hide();
+            }
+
+        })
+    </script>
 </body>
 
 </html>

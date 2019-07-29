@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
+// initializ shopping cart class
+include '../Pagos/La-carta.php';
+$cart = new Cart;
+
 include '../DAO/metodosDAO.php';
 $objMetodo = new metodosDAO();
 if ($_SESSION['user_id'] != null) {
     $usuario = $objMetodo->BuscarUsuarioNick($_SESSION['user_id']);
-    $lista = $_SESSION['lista'];
     $arrayDatos = [];
-    $arrayDatos['lista'] = $lista;
     $arrayDatos['usuarioNick'] = $usuario;
     $arrayDatos['usuarioId'] = $_SESSION['user_id'];
 } else {
     $usuario = null;
-    $lista = $_SESSION['lista'];
     $arrayDatos = [];
-    $arrayDatos['lista'] = $lista;
     $arrayDatos['usuarioId'] = null;
 }
+
+
+
 ?>
 
 <html lang="en">
 
 <head>
-    <title>Carrito de compras</title>
+    <title>TechEC | Carrito</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sublime project">
@@ -32,6 +34,22 @@ if ($_SESSION['user_id'] != null) {
     <link href="../assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/cart.css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/cart_responsive.css">
+
+    <script>
+        function updateCartItem(obj, id) {
+            $.get("cartAction.php", {
+                action: "updateCartItem",
+                id: id,
+                qty: obj.value
+            }, function(data) {
+                if (data == 'ok') {
+                    location.reload();
+                } else {
+                    alert('Cart update failed, please try again.');
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -69,6 +87,7 @@ if ($_SESSION['user_id'] != null) {
 
         <div class="cart_info">
             <div class="container">
+
                 <div class="row">
                     <div class="col">
                         <!-- Column Titles -->
@@ -80,50 +99,66 @@ if ($_SESSION['user_id'] != null) {
                         </div>
                     </div>
                 </div>
+
+                <!--Productos listados-->
+
                 <div class="row cart_items_row">
                     <div class="col">
 
                         <!-- Cart Item -->
-                        <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-                            <!-- Name -->
-                            <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-                                <div class="cart_item_image">
-                                    <div><img src="../assets/images/pc-armada.jpg" alt=""></div>
-                                </div>
-                                <div class="cart_item_name_container">
-                                    <div class="cart_item_name"><a href="#">Pc de escritorio personalizada</a></div>
-                                    <div class="cart_item_edit"><a href="#">
-                                            <p>
-                                                <i>Editar producto </i><br>
-                                                Gtx 1060 6gb <br>
-                                                16gb Ram <br>
-                                                I7 7700k <br>
-                                                Placa base chida <br>
-                                            </p>
-                                        </a></div>
-                                </div>
-                            </div>
-                            <!-- Price -->
-                            <div class="cart_item_price">$790.90</div>
-                            <!-- Quantity -->
-                            <div class="cart_item_quantity">
-                                <div class="product_quantity_container">
-                                    <div class="product_quantity clearfix" style="height:64px !important;">
-                                        <input id="quantity_input" type="text" pattern="[1-9]*" value="1" style="margin-top: 2px;" min="1">
-                                        <div class="quantity_buttons">
-                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                        <?php
+
+                        if ($cart->total_items() > 0) {
+                            //get cart items from session
+                            $cartItems = $cart->contents();
+                            foreach ($cartItems as $item) {
+                                ?>
+                                <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                                    <!-- Name -->
+                                    <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+                                        <div class="cart_item_image">
+                                            <div><img src="../assets/img/<?php echo $item["imagen"]; ?>" alt=""></div>
+                                        </div>
+                                        <div class="cart_item_name_container">
+                                            <div class="cart_item_name"><a href="#"><?php echo $item["name"]; ?></a></div>
+                                            <div class="cart_item_edit"><a href="#">
+                                                    <p>
+                                                        Gtx 1060 6gb <br>
+                                                        16gb Ram <br>
+                                                        I7 7700k <br>
+                                                        Placa base chida <br>
+                                                    </p>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- Price -->
+                                    <div class="cart_item_price"><?php echo '$' . $item["price"] . ' USD'; ?></div>
+                                    <!-- Quantity -->
+                                    <div class="cart_item_quantity">
+                                        <div class="product_quantity_container">
+                                            <div class="product_quantity clearfix" style="height:64px !important;">
+                                                <input id="quantity_input" type="text" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, `<?php echo $item['rowid']; ?>`)" style="margin-top: 2px;">
+                                                <div class="quantity_buttons">
+                                                    <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                                    <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Total -->
+                                    <div class="cart_item_total"><?php echo '$' . $item["subtotal"] . ' USD'; ?></div>
                                 </div>
-                            </div>
-                            <!-- Total -->
-                            <div class="cart_item_total">$790.90</div>
+                                <!--Eliminar-->
+                                <div class="button">
+                                    <a href="../Pagos/AccionCarta.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" onclick="return confirm('Confirma eliminar?')">Eliminar Producto</a>
+                                </div>
+                            <?php }
+                        } else { ?>
 
-                        </div>
-                        <div class="button"><a href="#">Eliminar Producto</a></div>
+                            <p>Tu Carrito esta vacio.....</p>
 
-
+                        <?php } ?>
 
                     </div>
                 </div>
@@ -132,7 +167,19 @@ if ($_SESSION['user_id'] != null) {
                         <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
                             <div class="button continue_shopping_button"><a href="Catalogo.php">Continuar comprando</a></div>
                             <div class="cart_buttons_right ml-lg-auto">
-                                <div class="button clear_cart_button"><a href="#">Limpiar carrito</a></div>
+
+                                <script>
+                                    function seguro() {
+                                        const seguridad = confirm('Estas seguro de eliminar todo el carrito?');
+                                        if (seguridad) {
+                                            window.location = 'Catalogo.php?ejecutar=true';
+                                        }
+                                    }
+                                </script>
+
+                                <div class="button clear_cart_button"><a href="#" onclick="seguro()">
+                                        Limpiar carrito
+                                    </a></div>
                             </div>
                         </div>
                     </div>
@@ -169,15 +216,23 @@ if ($_SESSION['user_id'] != null) {
                                 <ul>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Subtotal</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
+                                        <div class="cart_total_value ml-auto">
+                                            <?php if ($cart->total_items() > 0) { ?>
+                                                <strong><?php echo '$' . $cart->total() . ' USD'; ?></strong>
+                                            <?php } ?>
+                                        </div>
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Envio</div>
-                                        <div class="cart_total_value ml-auto">Gratis</div>
+                                        <div class="cart_total_value ml-auto"><strong>Gratis</strong></div>
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Total</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
+                                        <div class="cart_total_value ml-auto">
+                                            <?php if ($cart->total_items() > 0) { ?>
+                                                <strong><?php echo '$' . $cart->total() . ' USD'; ?></strong>
+                                            <?php } ?>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>

@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <?php
-session_start();
+//Se incluyen los metodos a utilizar
 include '../DAO/metodosDAO.php';
 $objMetodo = new metodosDAO();
+
+// Incluyendo la base de datos 
+$cnx = new ConexionDB();
+$cn = $cnx->getConexion();
+
+
+// Inicializando la clase del carrito
+include '../Pagos/La-carta.php';
+$cart = new Cart;
+
+// Si no hay nada que se redicreccione a los productos
+if ($cart->total_items() <= 0) {
+	header("Location: Catalogo.php");
+}
+
+// Obtener los detalles del consumidor
+$query = $cn->prepare("SELECT * FROM clientes WHERE id = " . $_SESSION['user_id']);
+$query->execute();
+$customRow = $query->fetch(PDO::FETCH_ASSOC);
+
 if ($_SESSION['user_id'] != null) {
 	$usuario = $objMetodo->BuscarUsuarioNick($_SESSION['user_id']);
-	$lista = $_SESSION['lista'];
 	$arrayDatos = [];
-	$arrayDatos['lista'] = $lista;
 	$arrayDatos['usuarioNick'] = $usuario;
 	$arrayDatos['usuarioId'] = $_SESSION['user_id'];
 } else {
 	$usuario = null;
-	$lista = $_SESSION['lista'];
 	$arrayDatos = [];
-	$arrayDatos['lista'] = $lista;
 	$arrayDatos['usuarioId'] = null;
 }
+
 ?>
 <html lang="en">
 
 <head>
-	<title>Checkout</title>
+	<title>TechEC | Checkout</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Sublime project">
@@ -75,6 +92,14 @@ if ($_SESSION['user_id'] != null) {
 							<div class="section_title">Direccion de envio</div>
 							<div class="section_subtitle">Enter your address info</div>
 							<div class="checkout_form_container">
+								<h5>Nombre</h5>
+								<p><?php echo $customRow['name']; ?></p>
+								<h5>Email</h5>
+								<p><?php echo $customRow['email']; ?></p>
+								<h5>Numero de Telefono</h5>
+								<p><?php echo $customRow['phone']; ?></p>
+								<h5>Direccion de envio</h5>
+								<p><?php echo $customRow['address']; ?></p>
 							</div>
 						</div>
 					</div>
@@ -88,26 +113,53 @@ if ($_SESSION['user_id'] != null) {
 
 							<!-- Order details -->
 							<div class="order_list_container">
+
 								<div class="order_list_bar d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Product</div>
-									<div class="order_list_value ml-auto">Total</div>
+									<div class="order_list_title">Producto</div>
+									<div class="order_list_value ml-auto">Precio</div>
 								</div>
+
+
 								<ul class="order_list">
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="order_list_title">Cocktail Yellow dress</div>
-										<div class="order_list_value ml-auto">$59.90</div>
-									</li>
+
+									<?php
+									if ($cart->total_items() > 0) {
+										//get cart items from session
+										$cartItems = $cart->contents();
+										foreach ($cartItems as $item) {
+											?>
+											<li class="d-flex flex-row align-items-center justify-content-start">
+												<div class="order_list_title"><?php echo $item["name"]; ?></div>
+												<div class="order_list_value ml-auto"><?php echo '$' . $item["subtotal"] . ' USD'; ?></div>
+											</li>
+										<?php }
+									} else { ?>
+										<p>No hay hay articulos en tu carrito</p>
+									<?php } ?>
+
+
+
+
+
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="order_list_title">Subtotal</div>
-										<div class="order_list_value ml-auto">$59.90</div>
+										<div class="order_list_value ml-auto">
+											<?php if ($cart->total_items() > 0) { ?>
+												<strong> <?php echo '$' . $cart->total() . ' USD'; ?></strong>
+											<?php } ?>
+										</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="order_list_title">Shipping</div>
-										<div class="order_list_value ml-auto">Free</div>
+										<div class="order_list_title">Envio</div>
+										<div class="order_list_value ml-auto"><strong>Gratis</strong></div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="order_list_title">Total</div>
-										<div class="order_list_value ml-auto">$59.90</div>
+										<div class="order_list_value ml-auto">
+											<?php if ($cart->total_items() > 0) { ?>
+												<strong> <?php echo '$' . $cart->total() . ' USD'; ?></strong>
+											<?php } ?>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -132,7 +184,17 @@ if ($_SESSION['user_id'] != null) {
 
 							<!-- Order Text -->
 							<div class="order_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra temp or so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</div>
-							<div class="button order_button"><a href="#">Realizar pedido</a></div>
+							<script>
+								function seguro() {
+									const seguro = confirm("Estas seguro de realizar la compra?");
+									if (seguro) {
+										window.location = "../Pagos/AccionCarta.php?action=placeOrder";
+									} else {
+										return false;
+									}
+								}
+							</script>
+							<div class="button order_button"><a href="#" onclick="seguro()">Realizar pedido</a></div>
 						</div>
 					</div>
 				</div>

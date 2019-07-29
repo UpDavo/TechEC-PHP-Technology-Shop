@@ -70,7 +70,7 @@ class Cart
 		if (!is_array($item) or count($item) === 0) {
 			return FALSE;
 		} else {
-			if (!isset($item['id'], $item['name'], $item['price'], $item['qty'])) {
+			if (!isset($item['id'], $item['name'], $item['price'], $item['qty'], $item['imagen'])) {
 				return FALSE;
 			} else {
 				/*
