@@ -15,13 +15,14 @@ class metodosDAO
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cn->prepare("SELECT * FROM productos");
+        $res = $cn->prepare("SELECT * FROM mis_productos");
         $res->execute();
 
         /*
          * Lo que hace el for each es listar cada uno de
          * los productos de la base de datos dentro de un arreglo
          */
+
         foreach ($res as $row) {
             $lista[] = $row;
         }
@@ -34,7 +35,7 @@ class metodosDAO
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cn->prepare("SELECT * FROM productos WHERE codPro = $codigo");
+        $res = $cn->prepare("SELECT * FROM mis_productos WHERE id = $codigo");
         $res->execute();
 
         /*

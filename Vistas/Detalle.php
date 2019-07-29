@@ -8,10 +8,11 @@ $objetoMetodos = new metodosDAO();
 $listaCodigo = $objetoMetodos->ListarProductosCodigo($codigo);
 
 foreach ($listaCodigo as $row) {
+    $id = $row[0];
     $nombre = $row[1];
-    $precio = $row[2];
-    $detalle = $row[5];
-    $imagen = $row[6];
+    $precio = $row[6];
+    $detalle = $row[2];
+    $imagen = $row[5];
 }
 
 ?>
@@ -26,9 +27,15 @@ foreach ($listaCodigo as $row) {
     <title>Document</title>
 </head>
 
+<style>
+    button:hover {
+        cursor: pointer;
+    }
+</style>
+
 <body>
     <form action="">
-        <table>
+        <table style="margin-bottom: 40px;">
             <tr>
                 <th rowspan="4">
                     <img src="../assets/img/<?php echo $imagen; ?>" alt="Producto" width="200" height="170">
@@ -47,6 +54,10 @@ foreach ($listaCodigo as $row) {
                 <th align="right">Ingrese la Cantidad: <input type="number" min="1" max="100" value="1" name="txtCantidad" style="margin-left: 10px;"></th>
             </tr>
         </table>
+        <div align="center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success">Agregarlo al carrito</button>
+        </div>
     </form>
 </body>
 

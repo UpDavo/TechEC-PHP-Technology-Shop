@@ -5,7 +5,7 @@ class ConexionDB
 
     public function getConexion()
     {
-        $cnx = new PDO("mysql:host=localhost;dbname=techec", "root", "");
+        $cnx = new PDO("mysql:host=localhost;dbname=techec2", "root", "");
         return $cnx;
     }
 

@@ -63,6 +63,7 @@ $lista = $_SESSION['lista'];
 
                         <!-- Product Sorting -->
                         <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+
                             <div class="results">Mostrando <span> <?php echo (count($lista)) ?></span> resultados</div>
                             <div class="sorting_container ml-md-auto">
                                 <div class="sorting">
@@ -93,13 +94,12 @@ $lista = $_SESSION['lista'];
                             foreach ($lista as $listado) {
                                 ?>
                                 <div class="product">
-                                    <div class="product_image"><img src="../assets/img/<?php echo $listado[6] ?>" alt="Producto-<?php echo $listado[0] ?>" width="250px" height="220px"></div>
+                                    <div class="product_image"><img src="../assets/img/<?php echo $listado[5] ?>" alt="Producto-<?php echo $listado[0] ?>" width="250px" height="220px"></div>
                                     <div class="product_extra product_new"><a href="#"><?php echo $listado[4] ?></a></div>
                                     <div class="product_content">
-                                        <div class="product_title"><a href="#"><?php echo $listado[1] ?></a></div>
-                                        <div class="product_price">$<?php echo $listado[2] ?></div>
+                                        <div class="product_title"><a href="#" onclick="enviar(<?php echo $listado[0] ?>)" data-toggle="modal" data-target="#productos" id="Carrito"><?php echo $listado[1] ?></a></div>
+                                        <div class="product_price">$<?php echo $listado[6] ?></div>
                                         <br>
-                                        <button type="button" onclick="enviar(<?php echo $listado[0] ?>)" class="btn btn-success" data-toggle="modal" data-target="#productos" id="Carrito" onclick="">Añadir al Carrito</button>
                                     </div>
                                 </div>
                             <?php
@@ -129,8 +129,7 @@ $lista = $_SESSION['lista'];
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success">Agregarlo al carrito</button>
+                        
                     </div>
                 </div>
             </div>

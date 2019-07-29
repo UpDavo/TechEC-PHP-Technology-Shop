@@ -37,6 +37,14 @@
                     </div>
 
                     <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Celular" name="celular" />
+                    </div>
+
+                    <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" />
+                    </div>
+
+                    <div class="form-group" id="user-group">
                         <input type="email" class="form-control" placeholder="Correo electronico" name="mail" />
                     </div>
 
