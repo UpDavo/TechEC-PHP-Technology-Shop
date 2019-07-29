@@ -2,7 +2,23 @@
 
 <?php
 session_start();
-$lista = $_SESSION['lista'];
+include '../DAO/metodosDAO.php';
+$objMetodo = new metodosDAO();
+if ($_SESSION['user_id'] != null) {
+    $usuario = $objMetodo->BuscarUsuarioNick($_SESSION['user_id']);
+    $lista = $_SESSION['lista'];
+    $arrayDatos = [];
+    $arrayDatos['lista'] = $lista;
+    $arrayDatos['usuarioNick'] = $usuario;
+    $arrayDatos['usuarioId'] = $_SESSION['user_id'];
+} else {
+    $usuario = null;
+    $lista = $_SESSION['lista'];
+    $arrayDatos = [];
+    $arrayDatos['lista'] = $lista;
+    $arrayDatos['usuarioId'] = null;
+}
+
 ?>
 
 <html lang="en">
@@ -129,7 +145,7 @@ $lista = $_SESSION['lista'];
 
                     </div>
                     <div class="modal-footer">
-                        
+
                     </div>
                 </div>
             </div>
@@ -173,6 +189,16 @@ $lista = $_SESSION['lista'];
 
             xmlhttp.open("GET", "Detalle.php?codigo=" + codigo, true);
             xmlhttp.send();
+        }
+    </script>
+
+    <script type="text/javascript">
+        const datos = <?php echo json_encode($arrayDatos); ?>;
+        console.log(datos);
+        $('#iniciado').hide();
+        if (datos.usuarioId != null) {
+            $('#iniciado').show();
+            $("#registrar").hide();
         }
     </script>
 </body>

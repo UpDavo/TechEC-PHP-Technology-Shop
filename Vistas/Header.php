@@ -27,7 +27,7 @@
                         </nav>
                         <div class="header_extra ml-auto">
                             <div class="shopping_cart">
-                                <a href="cart.html">
+                                <a href="../Dreyna">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
                                         <g>
                                             <path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3
@@ -40,9 +40,22 @@
                                     <div>Carrito <span>(0)</span></div>
                                 </a>
                             </div>
-                            <div class="shopping_cart" style="margin-left: 10px;">
-                                <button type="button" class="btn btn-success btn-sm"><a href="Login.php" style="color:white !important;">Iniciar session</a></button>
+                            <div class="shopping_cart" style="margin-left: 10px;" id="registrar">
+                                <button type="button" class="btn btn-success btn-sm"><a href="Login.php" style="color:white !important;">Iniciar sesion</a></button>
                                 <button type="button" class="btn btn-success btn-sm"><a href="Registro.php" style="color:white !important;">Registrate</a></button>
+                            </div>
+
+                            <div class="shopping_cart" style="margin-left: 10px;" id="iniciado">
+                                <button type="button" class="btn btn-success btn-sm"><?php echo $usuario; ?></button>
+                                <script>
+                                    function regresar() {
+                                        var tomar = confirm('Estas seguro de cerrar sesion?');
+                                        if (tomar) {
+                                            window.location = '../index.php';
+                                        }
+                                    }
+                                </script>
+                                <button type="button" class="btn btn-success btn-sm"><a href="#" onclick="regresar();" style="color:white !important;">Cerrar sesion</a></button>
                             </div>
                             <div class="search">
                                 <div class="search_icon">

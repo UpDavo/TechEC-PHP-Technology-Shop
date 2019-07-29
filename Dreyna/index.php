@@ -71,7 +71,7 @@ include_once './Configuracion.php';
                     <?php } ?>
                 </div>
             </div>
-            <div class="panel-footer">BaulPHP</div>
+            <div class="panel-footer">Prueba sin CSS</div>
         </div>
         <!--Panek cierra-->
 

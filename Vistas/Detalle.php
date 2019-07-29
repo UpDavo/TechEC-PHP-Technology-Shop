@@ -50,9 +50,6 @@ foreach ($listaCodigo as $row) {
             <tr>
                 <th align="right">$ <?php echo $precio; ?></th>
             </tr>
-            <tr>
-                <th align="right">Ingrese la Cantidad: <input type="number" min="1" max="100" value="1" name="txtCantidad" style="margin-left: 10px;"></th>
-            </tr>
         </table>
         <div align="center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

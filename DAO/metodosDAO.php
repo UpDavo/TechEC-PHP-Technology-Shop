@@ -48,32 +48,21 @@ class metodosDAO
         return $lista;
     }
 
-    public function BuscarEmail($email)
+    public function BuscarUsuarioNick($id)
     {
+
         $cnx = new ConexionDB();
         $cn = $cnx->getConexion();
 
-        $res = $cn->prepare("SELECT * FROM clientes where correo = :email");
-        $res->bindParam(":email", $email, PDO::PARAM_STR);
+        $res = $cn->prepare("SELECT * FROM clientes WHERE id = :id");
+        $res->bindParam(":id", $id, PDO::PARAM_INT);
         $res->execute();
 
-        return $res;
-    }
 
-    public function IngresarUsuario($nombre, $apellido, $nickname, $correo, $password)
-    {
-        $cnx = new ConexionDB();
-        $cn = $cnx->getConexion();
+        foreach ($res as $row) {
+            $user = $row[2];
+        }
 
-        $res = $cn->prepare("INSERT INTO clientes (nombre, nickname, correo, pas) VALUES (:nombre :apellido, :nickname, :correo, :pass)");
-        $res->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-        $res->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-        $res->bindParam(":nickname", $nickname, PDO::PARAM_STR);
-        $res->bindParam(":correo", $correo, PDO::PARAM_STR);
-        $res->bindParam(":pass", $password, PDO::PARAM_STR);
-        $res->execute();
-
-        $user_id = $cn->lastInsertId();
-        return $user_id;
+        return $user;
     }
 }

@@ -10,6 +10,8 @@ $(document).ready(function() {
       nombre: $("input[name ='nombre']", $form).val(),
       apellido: $("input[name ='apellido']", $form).val(),
       nick: $("input[name ='nick']", $form).val(),
+      celular: $("input[name ='celular']", $form).val(),
+      direccion: $("input[name ='direccion']", $form).val(),
       mail: $("input[name ='mail']", $form).val(),
       clave1: $("input[name ='clave']", $form).val(),
       clave2: $("input[name ='clave2']", $form).val()
@@ -31,6 +33,11 @@ $(document).ready(function() {
         .text("Las claves no coinciden")
         .show();
       return false;
+    } else if (datosFormulario.celular.length < 10) {
+      $("#msg_error")
+        .text("Ingresa un numero de telefono valido")
+        .show();
+      return false;
     }
 
     $("#msg_error").hide();
@@ -50,6 +57,8 @@ $(document).ready(function() {
           $("#msg_error")
             .text(res.error)
             .show();
+        } else {
+          window.location.href = res.redirect;
         }
       })
       .fail(function ajaxError(error) {

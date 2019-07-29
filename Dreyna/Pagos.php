@@ -12,7 +12,7 @@ if ($cart->total_items() <= 0) {
 }
 
 // set customer ID in session
-$_SESSION['sessCustomerID'] = 1;
+$_SESSION['sessCustomerID'] = 3;
 
 // get customer details by session customer ID
 $query = $db->query("SELECT * FROM clientes WHERE id = " . $_SESSION['sessCustomerID']);
@@ -119,7 +119,7 @@ $custRow = $query->fetch_assoc();
                     <a href="AccionCarta.php?action=placeOrder" class="btn btn-success orderBtn">Realizar pedido <i class="glyphicon glyphicon-menu-right"></i></a>
                 </div>
             </div>
-            <div class="panel-footer">BaulPHP</div>
+            <div class="panel-footer">Prueba sin CSS</div>
         </div>
         <!--Panek cierra-->
     </div>

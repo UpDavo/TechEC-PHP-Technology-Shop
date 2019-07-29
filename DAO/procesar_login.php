@@ -1,6 +1,7 @@
 <?php
 
 include_once 'ConexionDB.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /*------------------------------------------------------------------------*/
 
     /*------------------------------------------------------------------------*/
-    $revisar = $cn->prepare("SELECT * FROM clientes where correo = :email");
+    $revisar = $cn->prepare("SELECT * FROM clientes where email = :email");
     $revisar->bindParam(":email", $email, PDO::PARAM_STR);
     $revisar->execute();
     /*------------------------------------------------------------------------*/
@@ -26,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($revisar->rowCount() == 1) {
         //Existe
         $user = $revisar->fetch(PDO::FETCH_ASSOC);
-        $user_id = (int) $user['codCli'];
+        $usuario = (int) $user['id'];
         $hash = (string) $user['pas'];
         //password_verify($password, $hash)
-        if ($password == $hash) {
-            $_SESSION['user_id'] = $user_id;
+        if (password_verify($password, $hash)) {
+            $_SESSION['user_id'] = $usuario;
             $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/Catalogo.php';
             $array_devolver['is_registered'] = true;
         } else {

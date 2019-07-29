@@ -11,7 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = strtoupper($_POST['nombre']);
     $apellido = strtoupper($_POST['apellido']);
     $nickname = strtoupper($_POST['nick']);
-    $nombreCompleto = $nombre . '' . $apellido;
+    $celular = strtoupper($_POST['celular']);
+    $direccion = strtoupper($_POST['direccion']);
+    $nombreCompleto = $nombre . ' ' . $apellido;
 
     //Hay que comprobar si el usuario existe para no replicarlo en la base de datos
 
@@ -21,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /*------------------------------------------------------------------------*/
 
     /*------------------------------------------------------------------------*/
-    $revisar = $cn->prepare("SELECT * FROM clientes where correo = :email");
+    $revisar = $cn->prepare("SELECT * FROM clientes where email = :email");
     $revisar->bindParam(":email", $email, PDO::PARAM_STR);
     $revisar->execute();
     /*------------------------------------------------------------------------*/
@@ -36,18 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = (string) password_hash($_POST['clave1'], PASSWORD_DEFAULT);
 
         /*------------------------------------------------------------------------*/
-        $insert = $cn->prepare("INSERT INTO `clientes` (`nombre`, `nickname`, `correo`, `pas`, `fecha_creado`) VALUES (:nombre , :nickname, :correo, :pass, CURRENT_TIMESTAMP)");
+        $insert = $cn->prepare("INSERT INTO clientes (name, nickname, email, phone, address, pas) VALUES (:nombre , :nickname, :correo, :telefono, :direccion, :pass)");
         $insert->bindParam(":nombre", $nombreCompleto, PDO::PARAM_STR);
         $insert->bindParam(":nickname", $nickname, PDO::PARAM_STR);
         $insert->bindParam(":correo", $email, PDO::PARAM_STR);
+        $insert->bindParam(":telefono", $celular, PDO::PARAM_STR);
+        $insert->bindParam(":direccion", $direccion, PDO::PARAM_STR);
         $insert->bindParam(":pass", $password, PDO::PARAM_STR);
         $insert->execute();
 
         /*------------------------------------------------------------------------*/
-        //http://localhost/TechEC-1/Vistas/Login.php
+        //http://localhost/TechEC-1/Vistas/usuarioCreado.php
         $user_id = $cn->lastInsertId();
         $_SESSION['user_id'] = (int) $user_id;
-        $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/Login.php';
+        $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/usuarioCreado.php';
         $array_devolver['is_login'] = true;
     }
 
