@@ -65,4 +65,37 @@ class metodosDAO
 
         return $user;
     }
+
+    public function BuscarUsuarioNombre($id)
+    {
+
+        $cnx = new ConexionDB();
+        $cn = $cnx->getConexion();
+
+        $res = $cn->prepare("SELECT * FROM clientes WHERE id = :id");
+        $res->bindParam(":id", $id, PDO::PARAM_INT);
+        $res->execute();
+
+
+        foreach ($res as $row) {
+            $user = $row[1];
+        }
+
+        return $user;
+    }
+
+    public function listarOrdenes()
+    {
+
+        $cnx = new ConexionDB();
+        $cn = $cnx->getConexion();
+
+        $res = $cn->prepare("SELECT * FROM orden");
+        $res->execute();
+
+        foreach ($res as $row) {
+            $listaOrdenes[] = $row;
+        }
+        return $listaOrdenes;
+    }
 }

@@ -209,12 +209,17 @@ if (isset($_GET['ejecutar'])) {
         console.log(datos);
         $('#iniciado').hide();
         $('#agregar').hide();
+        $('#admin').hide();
         if (datos.usuarioId != null) {
-            $('#iniciado').show();
-            $('#carrito').show();
-            $("#registrar").hide();
-            $('#agregar').show();
-            $("#iniciarSesion").hide();
+            if (datos.usuarioId != 6) {
+                $('#iniciado').show();
+                $('#carrito').show();
+                $("#registrar").hide();
+            } else {
+                $('#admin').show();
+                $('#carrito').show();
+                $("#registrar").hide();
+            }
         }
     </script>
 </body>

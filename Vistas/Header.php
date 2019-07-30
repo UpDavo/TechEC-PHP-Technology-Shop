@@ -61,6 +61,22 @@ function obtenerCarrito()
                                 </script>
                                 <button type="button" class="btn btn-success btn-sm"><a href="#" onclick="regresar();" style="color:white !important;">Cerrar sesion</a></button>
                             </div>
+
+                            <div class="shopping_cart" style="margin-left: 10px;" id="admin">
+                                <button type="button" class="btn btn-success btn-sm"><?php echo $usuario; ?></button>
+                                <script>
+                                    function regresar() {
+                                        var tomar = confirm('Estas seguro de cerrar sesion?');
+                                        if (tomar) {
+                                            window.location = '../index.php';
+                                        }
+                                    }
+                                </script>
+                                <button type="button" class="btn btn-success btn-sm"><a href="Admin.php" style="color:white !important;">Consola de Administrador</a></button>
+                                <button type="button" class="btn btn-success btn-sm"><a href="#" onclick="regresar();" style="color:white !important;">Cerrar sesion</a></button>
+
+                            </div>
+
                             <div class="search">
                                 <div class="search_icon">
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 475.084 475.084" style="enable-background:new 0 0 475.084 475.084;" xml:space="preserve">
