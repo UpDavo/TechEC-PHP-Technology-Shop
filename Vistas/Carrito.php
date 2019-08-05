@@ -57,7 +57,7 @@ if ($_SESSION['user_id'] != null) {
     <div class="super_container">
 
         <!-- Header -->
-        <?php include("header.php") ?>
+        <?php include("Header.php") ?>
 
         <!-- Home -->
 
@@ -254,7 +254,7 @@ if ($_SESSION['user_id'] != null) {
 
         <!-- Footer -->
 
-        <?php include("footer.php") ?>
+        <?php include("Footer.php") ?>
     </div>
 
     <script src="../assets/js/jquery-3.2.1.min.js"></script>
