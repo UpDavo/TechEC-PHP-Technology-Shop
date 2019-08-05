@@ -7,7 +7,7 @@ function cambiar(id) {
     var datosUsuario = {
       nombre: id
     };
-    var urlphp = "https://techec.herokuapp.com/TechEC-1/DAO/procesar_cambio.php";
+    var urlphp = "https://techec.herokuapp.com/DAO/procesar_cambio.php";
 
     $.ajax({
       type: "POST",

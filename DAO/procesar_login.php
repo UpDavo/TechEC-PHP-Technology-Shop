@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //password_verify($password, $hash)
         if (password_verify($password, $hash)) {
             $_SESSION['user_id'] = $usuario;
-            $array_devolver['redirect'] = 'https://techec.herokuapp.com/TechEC-1/Vistas/Catalogo.php';
+            $array_devolver['redirect'] = 'https://techec.herokuapp.com/Vistas/Catalogo.php';
             $array_devolver['is_registered'] = true;
         } else {
             $array_devolver['error'] = "Los datos no son validos.";
