@@ -290,6 +290,7 @@ if ($_SESSION['user_id'] != null) {
             }
         }
     </script>
+    <!--Hola-->
 </body>
 
 </html>
