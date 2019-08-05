@@ -273,11 +273,16 @@ if ($_SESSION['user_id'] != null) {
         console.log(datos);
         $('#iniciado').hide();
         $('#checkout').hide();
+        $('#admin').hide();
         if (datos.usuarioId != null) {
             $('#iniciado').show();
             $('#carrito').show();
             $('#checkout').show();
             $('#iniciarSesion').hide();
+            $("#registrar").hide();
+        } else {
+            $('#admin').show();
+            $('#carrito').show();
             $("#registrar").hide();
         }
     </script>
