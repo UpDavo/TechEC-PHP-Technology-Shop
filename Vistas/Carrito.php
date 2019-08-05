@@ -285,6 +285,8 @@ if ($_SESSION['user_id'] != null) {
                 $('#admin').show();
                 $('#carrito').show();
                 $("#registrar").hide();
+                $('#checkout').show();
+                $('#iniciarSesion').hide();
             }
         }
     </script>
