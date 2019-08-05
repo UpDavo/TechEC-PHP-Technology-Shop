@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $("#msg_error").hide();
 
-    var urlphp = "http://localhost/TechEC-1/DAO/procesar_registro.php";
+    var urlphp = "https://techec.herokuapp.com/TechEC-1/DAO/procesar_registro.php";
 
     $.ajax({
       type: "POST",
@@ -96,7 +96,7 @@ $(document).ready(function() {
 
     $("#msg_error").hide();
 
-    var urlphp = "http://localhost/TechEC-1/DAO/procesar_login.php";
+    var urlphp = "https://techec.herokuapp.com/TechEC-1/DAO/procesar_login.php";
 
     $.ajax({
       type: "POST",

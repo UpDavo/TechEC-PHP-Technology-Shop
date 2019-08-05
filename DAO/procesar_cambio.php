@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $insert->execute();
 
     /*------------------------------------------------------------------------*/
-    //http://localhost/TechEC-1/Vistas/usuarioCreado.php
-    $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/Admin.php';
+    //https://techec.herokuapp.com/TechEC-1/Vistas/usuarioCreado.php
+    $array_devolver['redirect'] = 'https://techec.herokuapp.com/TechEC-1/Vistas/Admin.php';
     $array_devolver['mensaje'] = 'Campo cambiado correctamente';
 
     echo json_encode($array_devolver);

@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $insert->execute();
 
         /*------------------------------------------------------------------------*/
-        //http://localhost/TechEC-1/Vistas/usuarioCreado.php
+        //https://techec.herokuapp.com/TechEC-1/Vistas/usuarioCreado.php
         $user_id = $cn->lastInsertId();
         $_SESSION['user_id'] = (int) $user_id;
-        $array_devolver['redirect'] = 'http://localhost/TechEC-1/Vistas/usuarioCreado.php';
+        $array_devolver['redirect'] = 'https://techec.herokuapp.com/TechEC-1/Vistas/usuarioCreado.php';
         $array_devolver['is_login'] = true;
     }
 
