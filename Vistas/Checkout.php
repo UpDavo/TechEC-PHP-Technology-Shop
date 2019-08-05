@@ -223,13 +223,15 @@ if ($_SESSION['user_id'] != null) {
 		$('#iniciado').hide();
 		$('#admin').hide();
 		if (datos.usuarioId != null) {
-			$('#iniciado').show();
-			$('#carrito').show();
-			$("#registrar").hide();
-		} else {
-			$('#admin').show();
-			$('#carrito').show();
-			$("#registrar").hide();
+			if (datos.usuarioId != 6) {
+				$('#iniciado').show();
+				$('#carrito').show();
+				$("#registrar").hide();
+			} else {
+				$('#admin').show();
+				$('#carrito').show();
+				$("#registrar").hide();
+			}
 		}
 	</script>
 </body>
