@@ -82,7 +82,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
             if ($insertOrderItems) {
                 $cart->destroy();
-                header("Location: ../Vistas/OrdenExitosa.php?id=$orderID");
+                header("Location: ../Vistas/ordenExitosa.php?id=$orderID");
             } else {
                 header("Location: Pagos.php");
             }
