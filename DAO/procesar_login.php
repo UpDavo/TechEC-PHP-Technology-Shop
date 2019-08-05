@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     /*------------------------------------------------------------------------*/
 
     /*------------------------------------------------------------------------*/
-    $revisar = $cn->prepare("SELECT * FROM clientes where email = :email");
+    $revisar = $cn->prepare("SELECT * FROM clientes WHERE email = :email");
     $revisar->bindParam(":email", $email, PDO::PARAM_STR);
     $revisar->execute();
     /*------------------------------------------------------------------------*/

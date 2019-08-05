@@ -48,6 +48,42 @@ class metodosDAO
         return $lista;
     }
 
+    public function obtenerNombrePorCodigo($codigo)
+    {
+        $cnx = new ConexionDB();
+        $cn = $cnx->getConexion();
+
+        $res = $cn->prepare("SELECT name,price FROM mis_productos WHERE id = $codigo");
+        $res->execute();
+
+        /*
+         * Lo que hace el for each es listar cada uno de
+         * los productos de la base de datos dentro de un arreglo
+         */
+        foreach ($res as $row) {
+            $nombre[] = $row;
+        }
+        return $nombre;
+    }
+
+    public function ListarProductosVendidos($codigo)
+    {
+        $cnx = new ConexionDB();
+        $cn = $cnx->getConexion();
+
+        $res = $cn->prepare("SELECT * FROM orden_articulos WHERE order_id = $codigo");
+        $res->execute();
+
+        /*
+         * Lo que hace el for each es listar cada uno de
+         * los productos de la base de datos dentro de un arreglo
+         */
+        foreach ($res as $row) {
+            $lista[] = $row;
+        }
+        return $lista;
+    }
+
     public function BuscarUsuarioNick($id)
     {
 

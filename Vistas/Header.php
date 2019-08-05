@@ -63,7 +63,6 @@ function obtenerCarrito()
                             </div>
 
                             <div class="shopping_cart" style="margin-left: 10px;" id="admin">
-                                <button type="button" class="btn btn-success btn-sm"><?php echo $usuario; ?></button>
                                 <script>
                                     function regresar() {
                                         var tomar = confirm('Estas seguro de cerrar sesion?');

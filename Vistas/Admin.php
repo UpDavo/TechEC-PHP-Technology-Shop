@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <?php
-
 include_once '../DAO/metodosDAO.php';
 
 $objMetodo = new metodosDAO();
@@ -22,6 +21,7 @@ $lista = $objMetodo->listarOrdenes();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <!-- Material Kit CSS -->
   <link href="../Admin/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+
 </head>
 
 <body class="dark-edition">
@@ -33,7 +33,7 @@ $lista = $objMetodo->listarOrdenes();
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="#" class="simple-text logo-normal">
           Tech EC | Administrador
         </a>
       </div>
@@ -184,6 +184,10 @@ $lista = $objMetodo->listarOrdenes();
                               <strong>Status</strong>
 
                             </th>
+                            <th>
+                              <strong>Confirmar</strong>
+
+                            </th>
                           </thead>
                           <tbody>
                             <?php
@@ -192,7 +196,7 @@ $lista = $objMetodo->listarOrdenes();
 
                               <tr>
                                 <td>
-                                  <strong><?php echo $row[0]; ?></strong>
+                                  <a href="#" onclick="enviar(<?php echo $row[0] ?>)" data-toggle="modal" data-target="#productos" id="Carrito" class="btn btn-info">Revisar pedido <?php echo $row[0]; ?></a>
                                 </td>
                                 <td>
                                   <?php echo $row[1]; ?>
@@ -222,10 +226,25 @@ $lista = $objMetodo->listarOrdenes();
 
                                   if ($row[5] == 1) {
                                     echo "Pedido Realizado";
+                                  } else if ($row[5] == 0) {
+                                    echo "Enviado";
                                   }
 
                                   ?>
                                 </td>
+                                <?php if ($row[5] == 1) {
+                                  ?>
+                                  <td>
+                                    <a href="#" type="button" class="btn btn-info" onclick="cambiar(<?php echo $row[0]; ?>);">Enviado</a>
+                                  </td>
+                                <?php
+                                } else {
+                                  ?>
+                                  <td>
+                                    <a href="#" type="button" class="btn btn-success">Recibido</a>
+                                  </td>
+                                <?php } ?>
+
                               </tr>
 
                             <?php } ?>
@@ -251,6 +270,26 @@ $lista = $objMetodo->listarOrdenes();
 
         </div>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="productos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">PEDIDO REALIZADO</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="mostrar">
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       <footer class="footer">
         <div class="container-fluid">
           <div class="copyright float-right">
@@ -283,6 +322,32 @@ $lista = $objMetodo->listarOrdenes();
   <script src="../Admin/assets/js/material-dashboard.js?v=2.1.0"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../Admin/assets/demo/demo.js"></script>
+
+  <script src="../assets/js/cambiar_registro.js"></script>
+
+  <script>
+    var resultado = document.getElementById('mostrar');
+
+    //Esta funcion sirve para enviar un AJAX a la peticion del producto
+    function enviar(codigo) {
+      var xmlhttp;
+      if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+      } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          resultado.innerHTML = xmlhttp.responseText;
+        }
+      }
+
+      xmlhttp.open("GET", "Pedido.php?codigo=" + codigo, true);
+      xmlhttp.send();
+    }
+  </script>
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
